@@ -1,14 +1,26 @@
-Hyperspace by HTML5 UP
+Spectral by HTML5 UP
 html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
 
-So I've had the wireframe for this particular design kicking around for some time, but with all
-the other interesting (and in some cases, semi-secret) projects I've been working on it took me
-a little while to get to actually designing and coding it. Fortunately, things have eased up
-enough for me to finaly get around to it, so I'm happy to introduce Hyperspace: a fun, blocky,
-one-page design with a lot of color, a bit of animation, and an additional "generic" page template
-(because hey, even one-page sites usually need an interior page or two). Hope you dig it :)
+A big, modern, blocky affair with a mobile-style menu, fully responsive styling,
+and an assortment of pre-styled elements. So, pretty much what you were expecting
+-- except, of course, for how it's put together, specifically:
+
+- It's built with components from my Responsive Tools project.
+
+- It uses flexbox, which eliminates all kinds of terrible hacks and clunky layout
+  stopgaps (like CSS grid systems).
+
+- It uses Sass* a lot more intelligently, thanks in part to several new mixins
+  and functions I've been working on (as well as a few by @HugoGiraudel).
+
+  (* = still entirely optional if you prefer vanilla CSS :)
+
+- A ton of other stuff.
+
+In short, Spectral's the culmination of several new things I'm working on/trying out,
+so please, let me know what you think :)
 
 Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
 you can use for pretty much whatever.
