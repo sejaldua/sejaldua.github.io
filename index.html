@@ -6,10 +6,19 @@
 -->
 <html>
 	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145307340-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-145307340-1);
+		</script>
 		<title>Sejal Dua</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/address-card-solid.ico" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="landing is-preload">
@@ -233,24 +242,13 @@
 			<p> If you would like to contact me or start a conversation for any reason whatsoever, please leave a message below.</p>
 			<div class="split style1">
 				<section>
-					<form method="post" action="#">
-						<div class="fields">
-							<div class="field half">
-								<label for="name">Name</label>
-								<input type="text" name="name" id="name" />
-							</div>
-							<div class="field half">
-								<label for="email">Email</label>
-								<input type="text" name="email" id="email" />
-							</div>
-							<div class="field">
-								<label for="message">Message</label>
-								<textarea name="message" id="message" rows="5"></textarea>
-							</div>
-						</div>
-						<ul class="actions">
-							<li><a href="mailto:sejal.dua@tufts.edu" class="button submit">Send Message</a></li>
-						</ul>
+					<form name="input" method="POST" action="https://formspree.io/sejal.dua@tufts.edu">
+						Name: <input type="text" name="Name" placeholder="Your name"/>
+						Email: <input type="email" name="_replyto" placeholder="Your email"/>
+						Message: <textarea name="message" placeholder="Type your message"/></textarea>
+						<input type="submit" value="Send Message"/>
+						<input type="hidden" name="_subject" value="Enter your subject"/>
+						<input type="hidden" name="_next" value="thanks.html" />
 					</form>
 				</section>
 				<section>
