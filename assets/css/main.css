@@ -2282,7 +2282,7 @@ ul.actions {
 	}
 
 	ul.actions.special {
-		-moz-justify-content: center;
+		-moz-justify-content: left;
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
