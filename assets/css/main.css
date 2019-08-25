@@ -1529,7 +1529,7 @@ input, select, textarea {
 				}
 
 				.row.aln-center {
-					justify-content: left;
+					justify-content: center;
 				}
 
 				.row.aln-right {
@@ -1759,7 +1759,7 @@ input, select, textarea {
 	}
 
 	header p {
-		color: rgba(73, 3, 50, 0.5);
+		color: rgba(255, 255, 255, 0.5);
 		position: relative;
 		top: -0.25em;
 	}
@@ -2282,7 +2282,7 @@ ul.actions {
 	}
 
 	ul.actions.special {
-		-moz-justify-content: left;
+		-moz-justify-content: center;
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
