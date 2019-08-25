@@ -1759,7 +1759,7 @@ input, select, textarea {
 	}
 
 	header p {
-		color: rgba(255, 255, 255, 0.5);
+		color: rgba(97, 19, 49, 0.212);
 		position: relative;
 		top: -0.25em;
 	}
@@ -3606,7 +3606,7 @@ ul.contact {
 		-ms-transition: -ms-transform 0.5s ease;
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
-		background: #9298b8;
+		background: #550734;
 		color: #ffffff;
 		height: 100%;
 		max-width: 80%;
