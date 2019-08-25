@@ -1529,7 +1529,7 @@ input, select, textarea {
 				}
 
 				.row.aln-center {
-					justify-content: center;
+					justify-content: left;
 				}
 
 				.row.aln-right {
@@ -2355,7 +2355,7 @@ ul.actions {
 				-ms-flex-shrink: 1;
 				flex-shrink: 1;
 				padding: 1em 0 0 0;
-				text-align: center;
+				text-align: celeftnter;
 				width: 100%;
 			}
 
