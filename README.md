@@ -6,7 +6,7 @@ as I work on more projects that I will be adding to my portfolio.
 
 I am very proud of a few recent features I have added to this site:
 1. the timeline page of my academic journey till now (check it out! suggestion: best enjoyed on full-screen on a computer but mobile-friendly)
-2. I wrote some Javascript so that the header image of both html pages changes depending on the day of the month
+2. wrote some Javascript so that the header image of both html pages changes depending on the day of the month (NOTE: this requires having 31 cover / banner photos and having a consistent naming convention for those photos)
 
 Here is the code for that:
 ```Javascript
