@@ -29,10 +29,10 @@ $(document).ready(function(){
 
 ### CREDITS
 
-Spectral by HTML5 UP
-Unsplash (unsplash.com)
-Font Awesome (fontawesome.io)
-jQuery (jquery.com)
-Scrollex (github.com/ajlkn/jquery.scrollex)
-Responsive Tools (github.com/ajlkn/responsive-tools)
-https://www.w3schools.com/
+* Spectral by HTML5 UP
+* Unsplash (unsplash.com)
+* Font Awesome (fontawesome.io)
+* jQuery (jquery.com)
+* Scrollex (github.com/ajlkn/jquery.scrollex)
+* Responsive Tools (github.com/ajlkn/responsive-tools)
+* HELP --> w3 (https://www.w3schools.com/)
