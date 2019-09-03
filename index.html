@@ -28,6 +28,20 @@
 
 <!-- Header -->
 <header id="header" class="alt">
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+		$(document).ready(function(){
+		var header = $('body');
+		var d = new Date();
+		var n = d.getDate();
+		var str1 = 'url("images/banner';
+		var str2 = '.JPG")';
+		var background = str1.concat(n, str2);
+		var current = 0;
+		header.css('background-image', background);
+		header.css('background-size', 'cover');
+		});
+		</script>
 	<h1><a href="index.html">Sejal Dua</a></h1>
 	<nav id="nav">
 		<ul>

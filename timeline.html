@@ -11,6 +11,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+		$(document).ready(function(){
+		var header = $('body');
+		var d = new Date();
+		var n = d.getDate();
+		var str1 = 'url("images/banner';
+		var str2 = '.JPG")';
+		var background = str1.concat(n, str2);
+		var current = 0;
+		header.css('background-image', background);
+		header.css('background-size', 'cover');
+		});
+		</script>
 	</head>
 	<body class="is-preload">
 
