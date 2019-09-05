@@ -306,7 +306,6 @@ html, body {
   }
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 * {
   box-sizing: border-box;
   font-weight: normal;
@@ -314,8 +313,6 @@ html, body {
 body {
   color: #555;
   background: #222;
-  font-family: 'Roboto Mono';
-  padding: 1em;
 }
 .flip {
   position: relative;
