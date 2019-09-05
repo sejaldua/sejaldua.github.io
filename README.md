@@ -27,7 +27,7 @@ $(document).ready(function(){
 ```
 3. discovered ![sourcerer app](https://github.com/sourcerer-io/sourcerer-app) which gives you a bunch of insights into what type of developer you are (e.g. which languages you are most preficient in, when you are most active / productive, which libraries you have used, coding conventions you prefer, etc.). this is the link to my profile: https://sourcerer.io/sejaldua. you can access it on my website by navigating to the footer and clicking on the statistics icon:
 
-![sourcerer gif](images/sourcerer.gif)
+![sourcerer gif](images/sourcerer1.gif)
 
 
 ### CREDITS
