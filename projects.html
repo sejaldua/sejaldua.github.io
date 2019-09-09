@@ -1,15 +1,26 @@
 <!DOCTYPE HTML>
 <html>
-   <head>
-      <title>Projects</title>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-      <link rel="stylesheet" href="assets/css/main.css" />
-      <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-      <link rel="shortcut icon" href="images/address-card-solid.ico" />
-      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
-   </head>
+      <head>
+            <title>Projects</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <link rel="stylesheet" href="assets/css/main.css" />
+            <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+            <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script>
+            $(document).ready(function(){
+            var header = $('body');
+            var d = new Date();
+            var n = d.getDate();
+            var str1 = 'url("images/banner';
+            var str2 = '.JPG")';
+            var background = str1.concat(n, str2);
+            var current = 0;
+            header.css('background-image', background);
+            header.css('background-size', 'cover');
+            });
+            </script>
+         </head>
    <body>
    <div id="page-wrapper">
 
@@ -32,7 +43,10 @@
                </nav>
             </header>
    <article id="main">
-      <h2> Personal Projects </h2>
+      <header>
+            <h2> Projects and Academic Coursework </h2>
+            <p> Fun stuff that occupies hours of my time and energy </p>
+         </header>
       <div class="flip">
             <div class="front" style="background-image: url(images/glioma.png)">
                <h1>glioma detection</h1>
@@ -107,14 +121,15 @@
 
       <!-- vertical -->
       
-      <h2> Academic Projects </h2>
+      <h2> Academic Coursework </h2>
       <div class="flip flip-vertical">
          <div class="front" style="background-image: url(images/002-approval.png)">
             <h1>Simlines</hi>
          </div>
          <div class="back">
             <h1>Simlines</h1>
-            <p> <b>LANGUAGE:</b> C <br> <b>DESCRIPTION: </b> <br> >> Wrote a program that recursively scans through files and identifies similar lines using a hash table <br> >> The program parses through input following a given definition of similarity and produces a report of the locations of similar lines within a text file. The data for these locations are stored in a linked list.
+            <p> <b>LANGUAGE:</b> C </p>
+            <p> <b>DESCRIPTION: </b> <br> >> Wrote a program that recursively scans through files and identifies similar lines using a hash table <br> >> The program parses through input following a given definition of similarity and produces a report of the locations of similar lines within a text file. The data for these locations are stored in a linked list.
             </p>
          </div>
       </div>
@@ -124,7 +139,8 @@
             </div>
             <div class="back">
                <h1>Unblack Edges</h1>
-               <p> <b>LANGUAGE:</b> C <br>  <b>DESCRIPTION: </b> <br> >> Designed and implemented an interface to support two-dimensional arrays of bits <br> >> Used two-dimensional array of bits interface to remove black edges from a scanned image.
+               <p> <b>LANGUAGE:</b> C </p> 
+               <p> <b>DESCRIPTION: </b> <br> >> Designed and implemented an interface to support two-dimensional arrays of bits <br> >> Used two-dimensional array of bits interface to remove black edges from a scanned image.
                </p>   
             </div>
       </div>
@@ -134,7 +150,8 @@
          </div>
          <div class="back">
             <h1>Sudoku Checker</h1>
-            <p> <b>LANGUAGE:</b> C <br> <b>DESCRIPTION: </b> <br> >> Adapted unboxed 2D array abstraction to support 2D arrays <br> >> Used 2D array interface to identify Sudoku solutions
+            <p> <b>LANGUAGE:</b> C </p>
+            <p> <b>DESCRIPTION: </b> <br> >> Adapted unboxed 2D array abstraction to support 2D arrays <br> >> Used 2D array interface to identify Sudoku solutions
             </p>  
             </div>
       </div>
@@ -144,7 +161,8 @@
          </div>
          <div class="back">
             <h1>Ppmtrans</h1>
-            <p> <b>LANGUAGE:</b> C <br> <b>DESCRIPTION: </b> <br> >> Implemented polymorphic blocked 2D arrays which were abstracted from 2D array interface <br> >> Implemented image transformations using three different array-access patterns <br> >> Predicted performance costs of image rotations using knowledge of caching and (spatial / temporal) locality </p>  
+            <p> <b>LANGUAGE:</b> C </p> 
+            <p> <b>DESCRIPTION: </b> <br> >> Implemented polymorphic blocked 2D arrays which were abstracted from 2D array interface <br> >> Implemented image transformations using three different array-access patterns <br> >> Predicted performance costs of image rotations using knowledge of caching and (spatial / temporal) locality </p>  
          </div>
       </div>
       <div class="flip flip-vertical">
@@ -153,7 +171,8 @@
             </div>
             <div class="back">
                <h1>Arith</h1>
-               <p> <b>LANGUAGE:</b> C <br> <b>DESCRIPTION: </b> <br> Compressions and decompressions were implemented in parallel <br> >> PART A (Lossy image compression) -  Converted between full-color portable pixmap images and compressed binary image files <br> >> PART B - implemented a bitpacking interface in big-endian order
+               <p> <b>LANGUAGE:</b> C </p>
+               <p> <b>DESCRIPTION: </b> <br> Compressions and decompressions were implemented in parallel <br> >> PART A (Lossy image compression) -  Converted between full-color portable pixmap images and compressed binary image files <br> >> PART B - implemented a bitpacking interface in big-endian order
                </p>  
             </div>
          </div>
@@ -163,8 +182,8 @@
          </div>
          <div class="back">
             <h1>Binary Bomb</h1>
-               <p> <b>LANGUAGES:</b> C, X64 Assembly <br>
-               <b>DESCRIPTION: </b> <br> >> Used GNU debugger to analyze assembly code and reverse-engineer inputs that would "diffuse" six functions with hidden bombs <br> >> Wrote the C-equivalent of two functions to understand how bits are stored in registers and how data structures are represented in Assembly </p>  
+               <p> <b>LANGUAGES:</b> C, X64 Assembly </p>
+               <p> <b>DESCRIPTION: </b> <br> >> Used GNU debugger to analyze assembly code and reverse-engineer inputs that would "diffuse" six functions with hidden bombs <br> >> Wrote the C-equivalent of two functions to understand how bits are stored in registers and how data structures are represented in Assembly </p>  
          </div>
       </div>
       <div class="flip flip-vertical">
@@ -173,7 +192,8 @@
             </div>
             <div class="back">
                <h1>Universal Machine</h1>
-               <p> <b>LANGUAGE:</b> C <br> <b>DESCRIPTION: </b> <br> >> Designed and implemented a Turing-complete 32-bit emulator with 8 registers and segmented memory on a 64-bit machine<br> >> Profiled and removed performance bottlenecks to optimize runtime from 225 seconds to just under 5 seconds</p>
+               <p> <b>LANGUAGE:</b> C </p>
+               <p> <b>DESCRIPTION: </b> <br> >> Designed and implemented a Turing-complete 32-bit emulator with 8 registers and segmented memory on a 64-bit machine<br> >> Profiled and removed performance bottlenecks to optimize runtime from 225 seconds to just under 5 seconds</p>
             </div>
          </div>
          <div class="flip flip-vertical">
@@ -182,7 +202,8 @@
                </div>
                <div class="back">
                   <h1>RPN Calculator</h1>
-                  <p> <b>LANGUAGE:</b> UM Macro Assembler <br> <b>DESCRIPTION: </b> <br> >> Implemented Reverse Polish Notation calculator on UM (See Universal Machine project) using jump table for control flow, a value stack, and a call stack <br> >> Wrote macros for mathematic and bitwise operations, as well as a recursive print function to print multi-digit numbers in pseudo-assembly </p>  
+                  <p> <b>LANGUAGE:</b> UM Macro Assembler </p>
+                  <p> <b>DESCRIPTION: </b> <br> >> Implemented Reverse Polish Notation calculator on UM (See Universal Machine project) using jump table for control flow, a value stack, and a call stack <br> >> Wrote macros for mathematic and bitwise operations, as well as a recursive print function to print multi-digit numbers in pseudo-assembly </p>  
                </div>
             </div>
             <div class="flip flip-vertical">
@@ -191,9 +212,12 @@
                   </div>
                   <div class="back">
                      <h1>Gerp</h1>
-                     <p> <b> LANGUAGE:</b> C++ <br> <b> DATA STRUCTURE: </b> Hash Table (vector of vector of vectors) <br> <b> DESCRIPTION: </b> <br> >> Implemented program that indexes and recursively queries file directories for all lines with a given word <br> >> Used hash tables to store word/line appearances and implemented chaining for handling collisions
+                     <p> <b> LANGUAGE:</b> C++ </p>
+                     <p> <b> DATA STRUCTURE: </b> Hash Table </p>
+                     <p> <b> DESCRIPTION: </b> <br> >> Implemented program that indexes and recursively queries file directories for all lines with a given word <br> >> Used hash tables to store word/line appearances and implemented chaining for handling collisions </p>
                   </div>
                </div>
+
       </article>
       <footer id="footer">
 				<ul class="icons">
