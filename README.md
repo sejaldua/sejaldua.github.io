@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 ![sourcerer gif](images/sourcerer1.gif)
 
-4. added a timeline page! ![timeline](timeline.png)
+4. added a timeline page! ![timeline](images/timeline.png)
 
 
 ### CREDITS
