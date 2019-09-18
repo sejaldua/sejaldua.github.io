@@ -3850,6 +3850,10 @@ background-image: url(../../images/will_smith.jpg);
 background-image: url(../../images/chatbot.png);
 }
 
+.card--3 .card__img, .card--3 .card__img--hover {
+	background-image: url(../../images/skydiving.png);
+	}
+
 .card__like {
 width: 18px;
 }
