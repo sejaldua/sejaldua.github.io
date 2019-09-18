@@ -1,5 +1,12 @@
 @import url(fontawesome-all.min.css);
 @import url('https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+*{
+  box-sizing: border-box;
+}
+
 
 
 /*
@@ -9,7 +16,7 @@
 */
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+iframe, h1, h2, h3, h4, h5, h6, h7, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -492,7 +499,7 @@ body {
 		margin: 0 0 2em 0;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h2, h3, h4, h5, h6, h7 {
 		color: #fff;
 		font-weight: 800;
 		letter-spacing: 0.225em;
@@ -501,7 +508,7 @@ body {
 		text-transform: uppercase;
 	}
 
-		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h7 a{
 			color: inherit;
 			text-decoration: none;
 		}
@@ -542,13 +549,24 @@ body {
 	}
 
 	h5 {
-		font-size: 0.8em;
+		font-size: 0.9em;
+		letter-spacing: 0.2em;
+		margin: 0em 0em 1em 0em;
+		text-transform: uppercase;
 		line-height: 1.5em;
 	}
 
 	h6 {
 		font-size: 0.7em;
 		line-height: 1.5em;
+	}
+
+	h7 {
+		font-size: 0.7em;
+		letter-spacing: 0.1em;
+		margin: 0em 0em 1em 0em;
+		text-transform: none;
+
 	}
 
 	sub {
@@ -2103,19 +2121,22 @@ body {
 	header h6 + p {
 		font-size: 0.9em;
 	}
+	header h7 + p {
+		font-size: 1em;
+	}
 
 	header.major {
 		margin: 0 0 3.5em 0;
 	}
 
-		header.major h2, header.major h3, header.major h4, header.major h5, header.major h6 {
+		header.major h2, header.major h3, header.major h4, header.major h5, header.major h6, header major h7 {
 			border-bottom: solid 2px #fff;
 			display: inline-block;
 			padding-bottom: 1em;
 			position: relative;
 		}
 
-			header.major h2:after, header.major h3:after, header.major h4:after, header.major h5:after, header.major h6:after {
+			header.major h2:after, header.major h3:after, header.major h4:after, header.major h5:after, header.major h6:after, header major h7 after {
 				content: '';
 				display: block;
 				height: 1px;
@@ -3264,7 +3285,7 @@ ul.contact {
 				color: #ffffff;
 			}
 
-			.wrapper.style1 h2, .wrapper.style1 h3, .wrapper.style1 h4, .wrapper.style1 h5, .wrapper.style1 h6 {
+			.wrapper.style1 h2, .wrapper.style1 h3, .wrapper.style1 h4, .wrapper.style1 h5, .wrapper.style1 h6, wrapper style1 h7 {
 				color: #ffffff;
 			}
 
@@ -3284,7 +3305,7 @@ ul.contact {
 				color: #a6e0db;
 			}
 
-			.wrapper.style1 header.major h2, .wrapper.style1 header.major h3, .wrapper.style1 header.major h4, .wrapper.style1 header.major h5, .wrapper.style1 header.major h6 {
+			.wrapper.style1 header.major h2, .wrapper.style1 header.major h3, .wrapper.style1 header.major h4, .wrapper.style1 header.major h5, .wrapper.style1 header.major h6, .wrapper.style1 header.major h7 {
 				border-color: rgba(0, 0, 0, 0.125);
 			}
 
@@ -3427,7 +3448,7 @@ ul.contact {
 				color: #c7f0dd;
 			}
 
-			.wrapper.style3 h2, .wrapper.style3 h3, .wrapper.style3 h4, .wrapper.style3 h5, .wrapper.style3 h6 {
+			.wrapper.style3 h2, .wrapper.style3 h3, .wrapper.style3 h4, .wrapper.style3 h5, .wrapper.style3 h6, wrapper.style h7 {
 				color: #c7f0dd;
 			}
 
@@ -3447,7 +3468,7 @@ ul.contact {
 				color: #c7f0dd;
 			}
 
-			.wrapper.style3 header.major h2, .wrapper.style3 header.major h3, .wrapper.style3 header.major h4, .wrapper.style3 header.major h5, .wrapper.style3 header.major h6 {
+			.wrapper.style3 header.major h2, .wrapper.style3 header.major h3, .wrapper.style3 header.major h4, .wrapper.style3 header.major h5, .wrapper.style3 header.major h6, .wrapper.style3 header.major h7 {
 				border-color: rgba(0, 0, 0, 0.125);
 			}
 
@@ -3590,7 +3611,7 @@ ul.contact {
 				color: rgb(250, 198, 226);
 			}
 
-			.wrapper.style5 h2, .wrapper.style5 h3, .wrapper.style5 h4, .wrapper.style5 h5, .wrapper.style5 h6 {
+			.wrapper.style5 h2, .wrapper.style5 h3, .wrapper.style5 h4, .wrapper.style5 h5, .wrapper.style5 h6, .wrapper.style5 h7 {
 				color: rgb(250, 198, 226);
 			}
 
@@ -3610,7 +3631,7 @@ ul.contact {
 				color: rgb(250, 198, 226);
 			}
 
-			.wrapper.style5 header.major h2, .wrapper.style5 header.major h3, .wrapper.style5 header.major h4, .wrapper.style5 header.major h5, .wrapper.style5 header.major h6 {
+			.wrapper.style5 header.major h2, .wrapper.style5 header.major h3, .wrapper.style5 header.major h4, .wrapper.style5 header.major h5, .wrapper.style5 header.major h6, wrapper.style5 header.major h7 {
 				border-color: #dfdfdf;
 			}
 
@@ -3811,6 +3832,141 @@ ul.contact {
 			}
 
 		}
+
+.cards {
+width: 100%;
+display: flex;
+display: -webkit-flex;
+justify-content: center;
+-webkit-justify-content: center;
+max-width: 820px;
+}
+
+.card--1 .card__img, .card--1 .card__img--hover {
+background-image: url(../../images/will_smith.jpg);
+}
+
+.card--2 .card__img, .card--2 .card__img--hover {
+background-image: url(../../images/chatbot.png);
+}
+
+.card__like {
+width: 18px;
+}
+
+.card__clock {
+width: 15px;
+vertical-align: middle;
+fill: #AD7D52;
+}
+.card__time {
+font-size: 12px;
+color: #AD7D52;
+vertical-align: middle;
+margin-left: 5px;
+}
+
+.card__clock-info {
+float: right;
+}
+
+.card__img {
+visibility: hidden;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+width: 100%;
+height: 235px;
+border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+
+}
+
+.card__info-hover {
+position: absolute;
+padding: 16px;
+width: 100%;
+opacity: 0;
+top: 0;
+}
+
+.card__img--hover {
+transition: 0.2s all ease-out;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+width: 100%;
+position: absolute;
+height: 235px;
+border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+top: 0;
+
+}
+.card {
+margin-right: 25px;
+transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+background-color: #2b343a;
+width: 33.3%;
+position: relative;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+.card:hover {
+box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+transform: scale(1.10, 1.10);
+}
+
+.card__info {
+z-index: 2;
+background-color: #2b343a;
+border-bottom-left-radius: 12px;
+border-bottom-right-radius: 12px;
+padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+font-family: 'Raleway', sans-serif;
+text-transform: uppercase;
+font-size: 13px;
+letter-spacing: 2px;
+font-weight: 500;
+color: #78bae0;
+}
+
+.card__title {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: 'Raleway', serif;
+    }
+
+.card__by {
+font-size: 12px;
+font-family: 'Raleway', sans-serif;
+font-weight: 500;
+}
+
+.card__author {
+font-weight: 600;
+text-decoration: none;
+color: rgb(143, 220, 226);
+}
+
+.card:hover .card__img--hover {
+height: 100%;
+opacity: 0.3;
+}
+
+.card:hover .card__info {
+background-color: transparent;
+position: relative;
+}
+
+.card:hover .card__info-hover {
+opacity: 1;
+}
+		    
 
 /* Split */
 
