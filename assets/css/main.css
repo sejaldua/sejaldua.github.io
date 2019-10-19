@@ -2231,6 +2231,7 @@ body {
       .hex h1, .hex p {
 	width: 100%;
 	padding: 5%;
+	box-sizing:border-box;
 	background-color: #550734;
 	font-weight: 300;
 	-webkit-transition:  -webkit-transform .2s ease-out, opacity .3s ease-out;
