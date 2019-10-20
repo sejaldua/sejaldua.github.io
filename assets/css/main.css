@@ -2870,6 +2870,8 @@ ul.actions {
 				flex-shrink: 1;
 				padding: 1em 0 0 0;
 				text-align: left;
+				justify-content: left;
+				text-justify: left;
 				width: 100%;
 			}
 
@@ -3757,6 +3759,8 @@ ul.contact {
 
 				.wrapper.style3 .features li {
 					border-top-color: rgba(0, 0, 0, 0.125);
+					text-align: left;
+					justify-content: left;
 				}
 
 			}
@@ -3920,6 +3924,8 @@ ul.contact {
 
 				.wrapper.style5 .features li {
 					border-top-color: #dfdfdf;
+					text-align: left;
+					justify-content: left;
 				}
 
 			}
