@@ -632,6 +632,88 @@ body {
 		text-align: right;
 	}
 
+	/* Note styles */
+.note-wrap {
+	width: 250px;
+	min-height: 40px;
+	padding: 20px; 
+	margin: 0 22px 22px 22px;
+	position: relative;
+	font-size: 20px;
+	vertical-align: top;
+  	display: inline-block;
+	font-family: Englebert, Arial;
+	color:#4b453c;
+	background: #F7E999;
+	line-height: 24px; 
+	text-align: center;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+	&:before  {
+		display: block;
+		content: ""; 
+		background: rgba(227, 200, 114, 0.40);
+		width: 130px;
+		height: 28px;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+		border-radius: 6px/18px 0;
+		position: absolute;
+		top: -13px;
+		left: 50px;
+		-webkit-transform: rotate(-2deg);
+		-moz-transform: rotate(-2deg);
+		-o-transform: rotate(-2deg);
+		-ms-transform: rotate(-2deg);
+		transform: rotate(-2deg);
+	}
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.note-yellow {
+	background: #F7E999;
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+.note-blue {
+	background: #b9dcf4;
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+	-o-transform: rotate(-2deg);
+	-ms-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+}
+.note-pink {
+	background: #FFBDA3;
+	-webkit-transform: rotate(1deg);
+	-moz-transform: rotate(1deg);
+	-o-transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+	transform: rotate(1deg);
+}
+.note-green {
+	background: #CAF4B9;
+	-webkit-transform: rotate(-1deg);
+	-moz-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg);
+	-ms-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+}
+
 /* Row */
 
 	.row {
