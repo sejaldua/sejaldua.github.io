@@ -3469,7 +3469,7 @@ ul.contact {
 			}
 
 				.spotlight br {
-					display: none;
+					display: block !important;
 				}
 
 				.spotlight .image {
