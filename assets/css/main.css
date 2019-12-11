@@ -1042,7 +1042,7 @@ body {
 				}
 
 				.row.aln-center {
-					justify-content: center;
+					justify-content: left;
 				}
 
 				.row.aln-right {
@@ -1287,7 +1287,7 @@ body {
 				}
 
 				.row.aln-center {
-					justify-content: center;
+					justify-content: left;
 				}
 
 				.row.aln-right {
@@ -1532,7 +1532,7 @@ body {
 				}
 
 				.row.aln-center {
-					justify-content: center;
+					justify-content: left;
 				}
 
 				.row.aln-right {
@@ -1777,7 +1777,7 @@ body {
 				}
 
 				.row.aln-center {
-					justify-content: center;
+					justify-content: left;
 				}
 
 				.row.aln-right {
@@ -3402,7 +3402,7 @@ ul.contact {
 
 				.features li {
 					padding: 3em 2em 1em 2em ;
-					text-align: center;
+					text-align: left;
 				}
 
 					.features li:before {
@@ -3421,6 +3421,7 @@ ul.contact {
 					background-color: transparent !important;
 					border-top: solid 2px #fff;
 					width: 100%;
+					text-align: left;
 				}
 
 					.features li:first-child {
