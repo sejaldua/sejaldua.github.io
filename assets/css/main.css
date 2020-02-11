@@ -392,23 +392,22 @@ body {
 	justify-content: center;
 	margin:0 auto;
 	
-      }
+    }
       
-      .flex iframe {
-	margin-right:20px;
-	margin-bottom:20px;
-	transition: all .3s;
-      }
+	.flex iframe {
+		margin-right:20px;
+		margin-bottom:20px;
+		transition: all .3s;
+    }
       
-      .flex iframe:hover {
-	transform:scale(1.05);
-	outline:2px solid hotpink;
-      }
+	.flex iframe:hover {
+		transform:scale(1.05);
+		outline:2px solid hotpink;
+    }
       
-      .flex iframe:last-child {
-	margin:0;
-      }
-}
+	.flex iframe:last-child {
+		margin:0;
+    }
 
 /* Basic */
 
@@ -711,23 +710,6 @@ body {
 	line-height: 24px; 
 	text-align: center;
 	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-	&:before  {
-		display: block;
-		content: ""; 
-		background: rgba(227, 200, 114, 0.40);
-		width: 130px;
-		height: 28px;
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-		border-radius: 6px/18px 0;
-		position: absolute;
-		top: -13px;
-		left: 50px;
-		-webkit-transform: rotate(-2deg);
-		-moz-transform: rotate(-2deg);
-		-o-transform: rotate(-2deg);
-		-ms-transform: rotate(-2deg);
-		transform: rotate(-2deg);
-	}
 }
 
 .clearfix:before,
@@ -4886,7 +4868,7 @@ opacity: 1;
 
 	#main > header {
 		padding: 12em 0 10em 0 ;
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("http://notrealdomain2.com/newbanner.png") 
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("http://notrealdomain2.com/newbanner.png");
 		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://notrealdomain2.com/newbanner.png");
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://notrealdomain2.com/newbanner.png");
 		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("http://notrealdomain2.com/newbanner.png");
