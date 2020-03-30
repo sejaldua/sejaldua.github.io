@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: 'Helvetica', sans-serif;
+}
+
+h1 {
+  margin-bottom: -10px;
+  text-align: center;
+}
+
+h2, h3 {
+  font-size: 16px;
+  margin-top: 25px;
+  margin-left: 10px;
+  float: left;
+}
+
+h2 {
+  margin-right: 10px;
+}
+
+h3 {
+  font-weight: normal;
+}
+
+h4 {
+  margin: 0;
+  font-weight: normal;
+  text-align: center;
+  color: #7C746D;
+  font-size: 12px;
+}
+
+.counties {
+  fill: none;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+.map-div {
+  margin: auto;
+  max-width: 1280px;
+}
+
+.q0-10 { fill:rgb(232,212,146); }
+.q1-10 { fill:rgb(226,200,134); }
+.q2-10 { fill:rgb(220,188,123); }
+.q3-10 { fill:rgb(214,176,112); }
+.q4-10 { fill:rgb(208,164,101); }
+.q5-10 { fill:rgb(203,152,89); }
+.q6-10 { fill:rgb(197,140,78); }
+.q7-10 { fill:rgb(191,128,67); }
+.q8-10 { fill:rgb(186,116,56); }
+.q9-10 { fill:rgb(180,105,45); }
+
+.Nothing {fill:#64635c;} 
+.Nothing {fill:#DADBD9;}
+.D5      {fill:#fbf66d;}
+.D5      {fill:#F9F7AC;}
+.D1      {fill:#ebc180;}
+.D2      {fill:#ef741e;}
+.D3      {fill:#e40101;}
+.D4      {fill:#6e0102;}
+
+.tooltip {
+  background: #fff;
+  width: 140px;
+  border-radius: 10px;
+  border: 1px solid #c9c9c9;
+  font-size: 0.6srem;
+  padding: 5px;
+  position: absolute;
+  text-align: center;
+  opacity: 0;
+}
+
+
+.legend {
+  float: right;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  margin-right: 50px;
+}
+
+.label {
+  text-align: center;
+  display: block;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+</style>
+<body>
+<h1></h1></br>
+<h4>Data Collection Period (1 week): 9/7/2016 - 10/3/2016</h4>
+<h4>Please visit <a href="https://droughtmonitor.unl.edu/">U.S. Drought Monitor</a> for more info</h4> 
+<div class='map-div'>
+  <div>
+    <h2>Mode: </h2>
+    <label class="switch">
+      <input type="checkbox">
+      <div class="slider"></div>
+    </label>
+    <h3></h3>
+  </div>
+</div>
+</body>
+<script src="js/d3.v4.min.js"></script>
+<script src="js/topojson.v1.min.js"></script>
+<script>
+  /*
+    * Name: Sejal Dua
+    * Date: 3/31/2020
+    * Prof: Megan Monroe
+    * Assn: Map Wrangling Lab
+    * 
+    * IMPLEMENTATION NOTES
+    * - hover over counties to activate tooltip feature
+    * - toggle the switch to change map modes
+    * - zooooom
+    *   - click on a county to zoom in
+    *   - click on anything that is not a county within the map to zoom out
+    *     NOTE: if there are no non-county regions shown within the map frame,
+    *           click on counties close to a coast of the US so that you can
+    *           find some whitespace to click on
+    * 
+    * HOURS SPENT: 12
+    *
+    * FUTURE DIRECTIONS
+    * - add more interactivity to the classification map so that
+    *   you can click on the rectangles in the legend to focus on
+    *   certain categories and ignore the others
+    * - add keypress listeners
+    *   - ex: pressing '0' would let you just focus on D0 values
+    * - implement some type of comparison that lets you select two states
+    *   or counties and compare drought numbers
+    * 
+    */ 
+
+
+// NOT SIZE-DEPENDENT
+
+var dsciById = d3.map();
+var dataById = d3.map();
+var levels = d3.map();
+
+d3.queue()
+  .defer(d3.json, "js/us.json")
+  .defer(d3.tsv, "tsv/drought.tsv", function(d) {
+    // for weighted sum (DSCI) map 
+    dataById.set(d.FIPS, d);
+    dsciById.set(d.FIPS, ((+d.D0)*1+(+d.D1)*2+(+d.D2)*3+(+d.D3)*4+(+d.D4)*5)/15);
+    // for cumulative classification (levels) map
+    var level = "Nothing";
+    d.Nothing = Number(d.Nothing);
+    if (Number(d.D0) > 0) level = "D0";
+    if (Number(d.D1) > 0) level = "D1";
+    if (Number(d.D2) > 0) level = "D2";
+    if (Number(d.D3) > 0) level = "D3";
+    if (Number(d.D4) > 0) level = "D4";
+    levels.set(d.FIPS, level);
+    
+  })
+  .await(ready);
+
+// color quantize function
+var quantize = d3.scaleQuantize()
+    .domain([0, 100])
+    .range(d3.range(10).map(function(i) { return "q" + i + "-10"; }));
+
+var title = d3.select("h1")
+    .text("Drought in the U.S. by County");
+
+var map = d3.select('.map-div')
+  .append('div')
+  .attr('class', 'map')
+  .attr('id', 'm')
+
+document.getElementById("m").style.cursor = "crosshair";
+
+
+// MODE 0: WEIGHTED SUM DSCI
+function makeMapDSCI(map, us)
+{
+  // clear map
+  map.selectAll("*").remove();
+
+  // set map dimensions based on current window size
+  var width = map.node().getBoundingClientRect().width;
+  var height = width * 0.625;
+
+  // sizing and scaling
+  var svg = map.append("svg")
+    .attr("width", width)
+    .attr("height", height)
+
+  var projection = d3.geoAlbersUsa()
+    .scale(width * 1.33)
+    .translate([width / 2, height / 2]);
+
+  var path = d3.geoPath()
+    .projection(projection);
+
+  // ZOOOOOM BABYYYYY
+
+  var centered;
+
+  var zoomSettings = {
+    duration: 1000,
+    ease: d3.easeCubicOut,
+    zoomLevel: 4
+  };
+
+  svg.append('rect')
+    .attr('class', 'background')
+    .attr('width', width)
+    .attr('height', height)
+    .on('click', clicked);
+
+  var g = svg.append('g');
+
+  function clicked(d) {
+    var x;
+    var y;
+    var zoomLevel;
+
+    if (d && centered !== d) {
+      var centroid = path.centroid(d);
+      x = centroid[0];
+      y = centroid[1];
+      zoomLevel = zoomSettings.zoomLevel;
+      centered = d;
+    } else {
+      x = width / 2;
+      y = height / 2;
+      zoomLevel = 1;
+      centered = null;
+    }
+    g.transition()
+      .duration(zoomSettings.duration)
+      .ease(zoomSettings.ease)
+      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + zoomLevel + ')translate(' + -x + ',' + -y + ')');
+  }
+
+  var tooltip = map.append('div').attr('class', 'tooltip');
+
+  // counties
+  g.append("g")
+      .attr("class", "counties")
+    .selectAll("path")
+      .data(topojson.feature(us, us.objects.counties).features)
+    .enter().append("path")
+      .attr("class", function(d) { return quantize(dsciById.get(d.id)); })
+      .attr("d", path)
+      .on("mouseover", handleMouseover)
+      .on("mouseout", handleMouseout)
+      .on("click", clicked);
+
+  // TOOLTIP MOUSEOVER & MOUSEOUT FUNCTIONS
+
+  function handleMouseover(d) {
+    tooltip.transition()
+      .duration(200)
+      .style('opacity', 0.7);
+    tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>DSCI: " + Math.round(dsciById.get(d.id) * 15))
+      .style('left', (d3.event.pageX - 70) + 'px')
+      .style('top', (d3.event.pageY - 50) + 'px');
+  }
+
+  function handleMouseout(d) {
+    tooltip.transition()
+      .duration(200)
+      .style('opacity', 0);
+  }
+
+  // states
+  g.append("path")
+    .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+    .attr("class", "states")
+    .attr("d", path)
+    .on("click", clicked);
+
+  // LEGEND
+  
+  var legend = map.append("div")
+    .attr('class', 'legend');
+
+  const size = 30;
+  var keys = [...Array(10).keys()];
+  color_keys = keys.map(function(d) {return d * 10});
+  dsci_keys = keys.map(function(d) {return d * 150});
+
+  var scale = legend.append('svg')
+    .attr('width', size * keys.length)
+    .attr('height', size)
+    .append('g');
+
+  scale.selectAll('rect')
+    .data(color_keys)
+    .enter()
+    .append('rect')
+      .attr("class", function(d) { return quantize(d); })
+      .attr('height', size)
+      .attr('width', size)
+      .attr('x', function(d, i) {return i * size;});
+
+  scale.selectAll('text')
+    .data(dsci_keys)
+    .enter()
+    .append('text')
+      .attr('x', function(d,i) {return i * 30 + 2;})
+      .attr('y', 25)
+      .text(function(d,i) {if (i % 2 == 0) return d;});
+
+  var label = legend.append('span')
+    .attr('class', 'label')
+    .html("Drought Severity and Coverage Index");
+}
+
+// MODE 1: CUMULATIVE CLASSIFICATION
+function makeMap(map, us) 
+{
+  // clear map
+  map.selectAll("*").remove();
+
+  // set map dimensions based on current window size
+  var width = map.node().getBoundingClientRect().width;
+  var height = width * 0.625;
+
+  // sizing and scaling
+  var svg = map.append("svg")
+    .attr("width", width)
+    .attr("height", height)
+
+  var projection = d3.geoAlbersUsa()
+    .scale(width * 1.33)
+    .translate([width / 2, height / 2]);
+
+  var path = d3.geoPath()
+    .projection(projection);
+
+  // ZOOOOOM BABYYYYY
+
+  var centered;
+
+  var zoomSettings = {
+    duration: 1000,
+    ease: d3.easeCubicOut,
+    zoomLevel: 4
+  };
+
+  svg.append('rect')
+    .attr('class', 'background')
+    .attr('width', width)
+    .attr('height', height)
+    .on('click', clicked);
+
+  var g = svg.append('g');
+
+  function clicked(d) {
+    var x;
+    var y;
+    var zoomLevel;
+
+    if (d && centered !== d) {
+      var centroid = path.centroid(d);
+      x = centroid[0];
+      y = centroid[1];
+      zoomLevel = zoomSettings.zoomLevel;
+      centered = d;
+    } else {
+      x = width / 2;
+      y = height / 2;
+      zoomLevel = 1;
+      centered = null;
+    }
+    g.transition()
+      .duration(zoomSettings.duration)
+      .ease(zoomSettings.ease)
+      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + zoomLevel + ')translate(' + -x + ',' + -y + ')');
+  }
+
+  var tooltip = map.append('div').attr('class', 'tooltip');
+
+  // counties
+  g.append("g")
+      .attr("class", "counties")
+    .selectAll("path")
+      .data(topojson.feature(us, us.objects.counties).features)
+    .enter().append("path")
+      .attr("class", function(d) { 
+        county = levels.get(d.id); 
+        if (county == 'D0')
+          return 'D5'; 
+        else
+          return county;
+      })
+      .attr("d", path)
+      .on("mouseover", handleMouseover)
+      .on("mouseout", handleMouseout)
+      .on("click", clicked);
+
+  // TOOLTIP MOUSEOVER & MOUSEOUT FUNCTIONS
+
+  function handleMouseover(d) {
+    level = levels.get(d.id);
+    tooltip.transition()
+      .duration(60)
+      .style('opacity', 0.7);
+    if (level == "Nothing")
+      tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>" + level + ": " + dataById.get(d.id).Nothing);
+    else if (level == "D0")
+      tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>" + level + ": " + dataById.get(d.id).D0);
+    else if (level == "D1")
+      tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>" + level + ": " + dataById.get(d.id).D1);
+    else if (level == "D2")
+      tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>" + level + ": " + dataById.get(d.id).D2);
+    else if (level == "D3")
+      tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>" + level + ": " + dataById.get(d.id).D3);
+    else if (level == "D4")
+      tooltip.html(dataById.get(d.id).County + " (" + dataById.get(d.id).State + ")<br/>" + level + ": " + dataById.get(d.id).D4);
+    tooltip.style('left', (d3.event.pageX - 70) + 'px')
+    tooltip.style('top', (d3.event.pageY - 50) + 'px');
+  }
+
+  function handleMouseout(d) {
+    tooltip.transition()
+      .duration(200)
+      .style('opacity', 0);
+  }
+
+  // states
+  g.append("path")
+    .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+    .attr("class", "states")
+    .attr("d", path)
+    .on("click", clicked);
+
+  // LEGEND
+  
+  var legend = map.append("div")
+    .attr('class', 'legend');
+
+  const size = 30;
+  var keys = ["Nothing", "D0", "D1", "D2", "D3", "D4"];
+  var labels = ["None", "D0: Abnormally Dry", "D1: Moderate Drought", "D2: Severe Drought", "D3: Extreme Drought", "D4: Exceptional Drought"]
+
+  var scale = legend.append('svg')
+    .attr('width', size * keys.length)
+    .attr('height', size * keys.length)
+    .append('g');
+
+  scale.selectAll('rect')
+    .data(keys)
+    .enter()
+    .append('rect')
+      .attr("class", function(d) { if (d == "D0") return "D5"; return d; })
+      .attr('height', size)
+      .attr('width', size)
+      .attr('x', 25)
+      .attr('y', function(d, i) {return i * size;});
+
+  scale.selectAll('text')
+    .data(keys)
+    .enter()
+    .append('text')
+      .attr('x', size * 2)
+      .attr('y', function (d, i) {return i * size + 18;})
+      .text(function(d,i) { return labels[i];});
+} 
+
+// RUN IT
+
+function ready(error, us) {
+
+  if (error) throw error;
+
+  // default map showed initially
+  var state = 0;
+  var mode = d3.select("h3")
+    .text("Weighted Sum (DSCI)");
+  makeMapDSCI(map, us);
+  
+  var checkbox = document.querySelector('input[type="checkbox"]');
+
+  // toggle switch listener
+  checkbox.addEventListener('change', function () {
+    if (checkbox.checked) {
+      state = 1;
+      mode = d3.select("h3")
+        .text("Classification (Cumulative)");
+      makeMap(map, us);
+    } else {
+      state = 0;
+      mode = d3.select("h3")
+        .text("Weighted Sum (DSCI)");
+      makeMapDSCI(map, us);
+    }
+  });
+  
+  // window resize listener
+  var timer;
+  window.addEventListener('resize', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      if (state == 0)
+        makeMapDSCI(map, us);
+      else
+        makeMap(map, us)
+      }, 200);
+  });
+}
+
+</script> 
