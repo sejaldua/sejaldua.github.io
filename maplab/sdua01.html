@@ -49,26 +49,6 @@ h4 {
   max-width: 1280px;
 }
 
-.q0-10 { fill:rgb(232,212,146); }
-.q1-10 { fill:rgb(226,200,134); }
-.q2-10 { fill:rgb(220,188,123); }
-.q3-10 { fill:rgb(214,176,112); }
-.q4-10 { fill:rgb(208,164,101); }
-.q5-10 { fill:rgb(203,152,89); }
-.q6-10 { fill:rgb(197,140,78); }
-.q7-10 { fill:rgb(191,128,67); }
-.q8-10 { fill:rgb(186,116,56); }
-.q9-10 { fill:rgb(180,105,45); }
-
-.Nothing {fill:#64635c;} 
-.Nothing {fill:#DADBD9;}
-.D5      {fill:#fbf66d;}
-.D5      {fill:#F9F7AC;}
-.D1      {fill:#ebc180;}
-.D2      {fill:#ef741e;}
-.D3      {fill:#e40101;}
-.D4      {fill:#6e0102;}
-
 .tooltip {
   background: #fff;
   width: 140px;
@@ -81,6 +61,13 @@ h4 {
   opacity: 0;
 }
 
+.keys {
+  float: left;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
 
 .legend {
   float: right;
@@ -150,6 +137,26 @@ input:checked + .slider:before {
   pointer-events: all;
 }
 
+
+.q0-10 { fill:rgb(232,212,146); }
+.q1-10 { fill:rgb(226,200,134); }
+.q2-10 { fill:rgb(220,188,123); }
+.q3-10 { fill:rgb(214,176,112); }
+.q4-10 { fill:rgb(208,164,101); }
+.q5-10 { fill:rgb(203,152,89); }
+.q6-10 { fill:rgb(197,140,78); }
+.q7-10 { fill:rgb(191,128,67); }
+.q8-10 { fill:rgb(186,116,56); }
+.q9-10 { fill:rgb(180,105,45); }
+
+.None {fill:#C0C1BF;} 
+.Nothing {fill:#DADBD9;}
+.D5      {fill:#F9F7AC;}
+.D1      {fill:#ebc180;}
+.D2      {fill:#ef741e;}
+.D3      {fill:#e40101;}
+.D4      {fill:#6e0102;}
+
 </style>
 <body>
 <h1></h1></br>
@@ -159,7 +166,7 @@ input:checked + .slider:before {
   <div>
     <h2>Mode: </h2>
     <label class="switch">
-      <input type="checkbox">
+      <input id ='toggle' type="checkbox">
       <div class="slider"></div>
     </label>
     <h3></h3>
@@ -168,6 +175,7 @@ input:checked + .slider:before {
 </body>
 <script src="js/d3.v4.min.js"></script>
 <script src="js/topojson.v1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
   /*
     * Name: Sejal Dua
@@ -178,49 +186,66 @@ input:checked + .slider:before {
     * IMPLEMENTATION NOTES
     * - hover over counties to activate tooltip feature
     * - toggle the switch to change map modes
+    *   - toggle mode via keypress listener: just press (spacebar)
     * - zooooom
     *   - click on a county to zoom in
     *   - click on anything that is not a county within the map to zoom out
     *     NOTE: if there are no non-county regions shown within the map frame,
     *           click on counties close to a coast of the US so that you can
     *           find some whitespace to click on
-    * 
-    * HOURS SPENT: 12
-    *
-    * FUTURE DIRECTIONS
-    * - add more interactivity to the classification map so that
-    *   you can click on the rectangles in the legend to focus on
-    *   certain categories and ignore the others
-    * - add keypress listeners
+    * - classification map has additional interactivity-- you can click on 
+    *   various keys on the keyboard to focus on certain categories and 
+    *   ignore the others
+    * - when a keypress listener is triggered, the counties are re-colored and
+    *   scaled linearly so that if the county has a value of 100 for that
+    *   category, it has full brightness, but if it is closer to 0, its color
+    *   is closer to grey
+    * - added a keypress menu so that the user knows what to do
     *   - ex: pressing '0' would let you just focus on D0 values
+    * 
+    * HOURS SPENT: 10-15
+    * 
+    * FUTURE:
     * - implement some type of comparison that lets you select two states
     *   or counties and compare drought numbers
-    * 
+    * - make zoom even smoother --> map becomes more navigable
     */ 
 
 
 // NOT SIZE-DEPENDENT
 
+// These are all the various maps I needed for the encodings
+// I am using. Did not know how to do multiple encodings in 1 map
 var dsciById = d3.map();
 var dataById = d3.map();
 var levels = d3.map();
+var mapN = d3.map();
+var mapD0 = d3.map();
+var mapD1 = d3.map();
+var mapD2 = d3.map();
+var mapD3 = d3.map();
+var mapD4 = d3.map();
 
 d3.queue()
   .defer(d3.json, "js/us.json")
   .defer(d3.tsv, "tsv/drought.tsv", function(d) {
-    // for weighted sum (DSCI) map 
+    // for weighted sum (DSCI) map
     dataById.set(d.FIPS, d);
     dsciById.set(d.FIPS, ((+d.D0)*1+(+d.D1)*2+(+d.D2)*3+(+d.D3)*4+(+d.D4)*5)/15);
     // for cumulative classification (levels) map
     var level = "Nothing";
-    d.Nothing = Number(d.Nothing);
     if (Number(d.D0) > 0) level = "D0";
     if (Number(d.D1) > 0) level = "D1";
     if (Number(d.D2) > 0) level = "D2";
     if (Number(d.D3) > 0) level = "D3";
     if (Number(d.D4) > 0) level = "D4";
     levels.set(d.FIPS, level);
-    
+    // for each level
+    mapD0.set(d.FIPS, Number(d.D0) - Number(d.D1));
+    mapD1.set(d.FIPS, Number(d.D1) - Number(d.D2));
+    mapD2.set(d.FIPS, Number(d.D2) - Number(d.D3));
+    mapD3.set(d.FIPS, Number(d.D3) - Number(d.D4));
+    mapD4.set(d.FIPS, Number(d.D4));
   })
   .await(ready);
 
@@ -228,6 +253,16 @@ d3.queue()
 var quantize = d3.scaleQuantize()
     .domain([0, 100])
     .range(d3.range(10).map(function(i) { return "q" + i + "-10"; }));
+
+// color linear function to go between grey and various level colors
+var colors = ['#DADBD9', '#C0C1BF', '#F9F7AC', '#ebc180', '#ef741e', '#e40101', '#6e0102'];
+function colorFunc(view) {
+  var colorScale = d3.scaleLinear()
+    .domain([0, 100])
+    .range(['#DADBD9', colors[view+2]])
+    .interpolate(d3.interpolateHcl);
+  return colorScale;
+}
 
 var title = d3.select("h1")
     .text("Drought in the U.S. by County");
@@ -376,10 +411,33 @@ function makeMapDSCI(map, us)
   var label = legend.append('span')
     .attr('class', 'label')
     .html("Drought Severity and Coverage Index");
+
+  // KEYPRESS LISTENER MENU
+
+  var codes = ['(spacebar)'];
+  var descriptions = ["KeyPress Options", "Toggle Map Mode"];
+
+  var keypresses = map.append("div")
+    .attr('class', 'keys');
+
+  var key = keypresses.append('svg')
+    .attr('width', size * 9)
+    .attr('height', size * descriptions.length)
+    .append('g');
+
+  key.selectAll('text')
+    .data(descriptions)
+    .enter()
+    .append('text')
+      .attr('x', 0)
+      .attr('y', function (d, i) {return i * 15 + 8;})
+      .style('font-weight', function(d, i) {if (i != 0) return 'normal'; else return 'bold';})
+      .text(function(d,i) { if (i != 0) return codes[i-1] + ' --- ' + descriptions[i]; else return descriptions[i];});
+
 }
 
 // MODE 1: CUMULATIVE CLASSIFICATION
-function makeMap(map, us) 
+function makeMap(map, us, view) 
 {
   // clear map
   map.selectAll("*").remove();
@@ -443,18 +501,72 @@ function makeMap(map, us)
 
   var tooltip = map.append('div').attr('class', 'tooltip');
 
-  // counties
+  // coloring (with special coloring for keypress listeners)
   g.append("g")
       .attr("class", "counties")
     .selectAll("path")
       .data(topojson.feature(us, us.objects.counties).features)
     .enter().append("path")
       .attr("class", function(d) { 
+        colorScale = colorFunc(view);
         county = levels.get(d.id); 
-        if (county == 'D0')
-          return 'D5'; 
-        else
-          return county;
+        if (view == -2) {
+          if (county == 'D0')
+            return 'D5'; 
+          else
+            return county;
+        }
+      })
+      .style('fill', function(d) {
+        county = levels.get(d.id);
+        if (view == -1) {
+          if (county == "Nothing") {
+            return colors[1];
+          }
+          else {
+            return colors[0];
+          }
+        }
+        else if (view == 0) {
+          if (county == "D0") {
+            return colorScale(mapD0.get(d.id));
+          }
+          else {
+            return colors[0];
+          }
+        }
+        else if (view == 1) {
+          if (county == "D1") {
+            return colorScale(mapD1.get(d.id));
+          }
+          else {
+            return colors[0];
+          }
+        }
+        else if (view == 2) {
+          if (county == "D2") {
+            return colorScale(mapD2.get(d.id));
+          }
+          else {
+            return colors[0];
+          }
+        }
+        else if (view == 3) {
+          if (county == "D3") {
+            return colorScale(mapD3.get(d.id));
+          }
+          else {
+            return colors[0];
+          }
+        }
+        else if (view == 4) {
+          if (county == "D4") {
+            return colorScale(mapD4.get(d.id));
+          }
+          else {
+            return colors[0];
+          }
+        }
       })
       .attr("d", path)
       .on("mouseover", handleMouseover)
@@ -498,7 +610,7 @@ function makeMap(map, us)
     .on("click", clicked);
 
   // LEGEND
-  
+
   var legend = map.append("div")
     .attr('class', 'legend');
 
@@ -528,6 +640,28 @@ function makeMap(map, us)
       .attr('x', size * 2)
       .attr('y', function (d, i) {return i * size + 18;})
       .text(function(d,i) { return labels[i];});
+
+  // KEYPRESS LISTENER MENU
+
+  var codes = ['(spacebar)', 'G', 'N', '0', '1', '2', '3', '4'];
+  var descriptions = ["KeyPress Options", "Toggle Map Mode", "General View", "Nothing only", "D0 only", "D1 only", "D2 only", "D3 only", "D4 only"];
+
+  var keypresses = map.append("div")
+    .attr('class', 'keys');
+
+  var key = keypresses.append('svg')
+    .attr('width', size * descriptions.length)
+    .attr('height', size * descriptions.length)
+    .append('g');
+
+  key.selectAll('text')
+    .data(descriptions)
+    .enter()
+    .append('text')
+      .attr('x', 0)
+      .attr('y', function (d, i) {return i * 15 + 8;})
+      .style('font-weight', function(d, i) {if (i != 0) return 'normal'; else return 'bold';})
+      .text(function(d,i) { if (i != 0) return codes[i-1] + ' --- ' + descriptions[i]; else return descriptions[i];});
 } 
 
 // RUN IT
@@ -550,7 +684,7 @@ function ready(error, us) {
       state = 1;
       mode = d3.select("h3")
         .text("Classification (Cumulative)");
-      makeMap(map, us);
+      makeMap(map, us, view);
     } else {
       state = 0;
       mode = d3.select("h3")
@@ -558,6 +692,53 @@ function ready(error, us) {
       makeMapDSCI(map, us);
     }
   });
+
+  // keypress listener for mode switching
+  view = -2;
+  window.addEventListener('keypress', function(e) {
+      var keyCode = e.keyCode;
+      console.log(state);
+      if (state == 1) {
+        if (keyCode == 71 || keyCode == 103)
+          view = -2;
+        else if(keyCode == 78 || keyCode == 110)
+          view = -1;
+        else if (keyCode == 48)
+          view = 0;
+        else if (keyCode == 49)
+          view = 1;
+        else if (keyCode == 50)
+          view = 2;
+        else if (keyCode == 51)
+          view = 3;
+        else if (keyCode == 52)
+          view = 4;
+        makeMap(map, us, view);
+      }
+  });
+  
+  // toggle mode via space bar
+  window.addEventListener('keypress', function(e) {
+      var keyCode = e.keyCode;
+      if(keyCode == 32 || keyCode == 13){
+        e.preventDefault();
+        console.log('keypress');
+        if (state == 0) {
+          $('#toggle').attr("checked", true);
+          state = 1;
+          mode = d3.select("h3")
+            .text("Classification (Cumulative)");
+          view = -2;
+          makeMap(map, us, view);
+        } else {
+          $('#toggle').attr("checked", false);
+          state = 0;
+          mode = d3.select("h3")
+            .text("Weighted Sum (DSCI)");
+          makeMapDSCI(map, us);
+        }
+      }
+    });
   
   // window resize listener
   var timer;
@@ -567,7 +748,7 @@ function ready(error, us) {
       if (state == 0)
         makeMapDSCI(map, us);
       else
-        makeMap(map, us)
+        makeMap(map, us, view)
       }, 200);
   });
 }
