@@ -5086,14 +5086,12 @@ opacity: 1;
 	}
 
 	.proj-title {
-		font-family: MyWebFont;
 		margin-bottom: 6px;
 		color: #000;
 		font-size: 1.1rem;
 	}
 
 	.proj-description {
-		font-family:MyWebFont1;
 		font-size: 1rem;
 		line-height: 1.5;
 		color: #797979;
