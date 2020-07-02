@@ -6,6 +6,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
             <link rel="stylesheet" href="./../assets/css/main.css" />
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
             <noscript><link rel="stylesheet" href="./../assets/css/noscript.css" /></noscript>
             <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
          </head>
@@ -36,12 +37,47 @@
       <article id="main">
             <div class="frame" style="max-width: 1300px">
                <div class="proj" style="padding-top:2%;padding-left:4%; padding-right: 4%">
-                  <section class="project-section">
-                  <br>Make sure to wear a mask and put your hard hat on because this page is under construction! <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-               </section>
+                  <h2 style="width: 100%; text-align: center;">COVID-19 Data Visualization</h2>
+
+
+                  <div data-aos="fade-right" class="proj-row">
+                     <img src="./../images/covidtracker.png" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
+                     </div>
+
+                  <div data-aos="fade-up" class="proj-row">
+                     <h3>Description</h3>
+                     <span class="proj-text">
+                        Our COVID-19 tracker application serves as a means for people to gain insights into pandemic trends through multiple types of data. The data comes from 3 disparate sources: Cuebiq Mobility Insights for mobility / movement data, the New York Times for daily reports on Coronavirus cases and deaths in the U.S., and the United States Census Bureau for demographic data. The central component of the visualization is the chloropleth map, in which move index data (collected from phones) is encoded by color, thus indicating how different places in the U.S. have responded to the pandemic crisis by way of social distancing as time has progressed.
+                        </span>
+                  </div>
+
+                  <div data-aos="fade-up" class="proj-row" >
+                     <hr class="line">
+                     </div>
+                  
+                  <div data-aos="fade-up" class="proj-row" >
+                     <h3>Details</h3>
+                     <span class="proj-text">
+                     <b>Date: </b> March 2020 - May 2020<br>
+                     <b>Team: </b> Sejal Dua, Sook-Hee Evans, Sammy Stolzenbach<br>
+                     <b>Tags: </b> Data Visualization, Academic<br>
+                     <b>Language(s):</b> Javascript, Python, HTML, CSS, Shell<br>
+                     <b>Tools & Technologies:</b> D3 Library, API calls, Geolocation Detection
+                     </span>
+                  </div>
+
+
+
+
+                
+
                </div>
          </div>
+         
       </article>
+      </html>
+
+      <html>
       <footer id="footer">
 				<ul class="icons">
 					<li><a href="https://twitter.com/SejalDua" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -63,6 +99,10 @@
 			<script src="./../assets/js/browser.min.js"></script>
 			<script src="./../assets/js/breakpoints.min.js"></script>
 			<script src="./../assets/js/util.js"></script>
-			<script src="./../assets/js/main.js"></script>
+         <script src="./../assets/js/main.js"></script>
+         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
