@@ -5252,14 +5252,15 @@ opacity: 1;
 		margin: 0px auto;
 	}
 
-	/* section.project-section {
+	section.project-section {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: center;
 		max-width: 1280px;
 		box-sizing: border-box;
-	} */
+	}
+	
 
 	.proj {
 		width: 60%;
