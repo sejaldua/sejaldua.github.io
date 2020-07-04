@@ -5177,7 +5177,8 @@ opacity: 1;
 
 		  .design-sample:after {
 			content:'\A';
-			width:100%; height:100%;
+			width:100%; 
+			height:100%;
 			top:0; left:0;
 			background:rgba(0,0,0,0.6);
 		  }
@@ -5209,10 +5210,10 @@ opacity: 1;
 		  
 			@media only screen and (min-width: 700px) and (max-width: 1024px){
 					.design-sample{
-					width: calc(33.33% - -2rem);
+					width: calc(40% - 2rem);
 					background: #ddd;
 					border-radius:4px;
-					padding-bottom:  calc(33.33% - 2rem);
+					padding-bottom:  calc(40% - 2rem);
 					box-shadow: 0 2px 2px rgba(0,0,0,0.06), 0 0 2px 1px rgba(0,0,0,0.03);
 					margin: 1rem;
 					box-sizing: border-box;
