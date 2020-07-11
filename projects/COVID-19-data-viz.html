@@ -77,7 +77,7 @@
                      <span class="proj-text">
                      <b>Date: </b> March 2020 - May 2020<br>
                      <b>Team: </b> Sejal Dua, Sook-Hee Evans, Sammy Stolzenbach<br>
-                     <b>Tags: </b> Data Visualization, Academic<br>
+                     <b>Topics: </b> Data Visualization, Academic<br>
                      <b>Language(s):</b> Javascript, Python, HTML, CSS, Shell<br>
                      <b>Tools & Technologies:</b> D3 Library, API calls, Geolocation Detection
                      </span>
@@ -97,9 +97,21 @@
                      <img src="./covid-gifs/slider.gif" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
                   </div>
 
+                  <div data-aos="fade-left" class="proj-row" >
+                     <p>Central to our implementation is a temporal progression of the aforementioned move index data. By dragging the slider in the top left corner of the screen, the user can look at data from a specific week or control the speed at which they fast forward through time.
+                     </p>
+                     <span class="proj-text">
+                  </div>
 
                   <div data-aos="fade-right" class="proj-row">
                      <img src="./covid-gifs/barchart.gif" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
+                  </div>
+
+
+                  <div data-aos="fade-right" class="proj-row" >
+                     <p>One of the most important and most frequently used features of our application is the animated bar chart of COVID-19 cases for a queried county. The user can query counties or click on the map to invoke this feature and explore any potential relationships between move index and increases or decreases in new cases.
+                     </p>
+                     <span class="proj-text">
                   </div>
 
 
@@ -107,8 +119,20 @@
                      <img src="./covid-gifs/donut.gif" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
                   </div>
 
+                  <div data-aos="fade-left" class="proj-row" >
+                     <p>After doing some user testing, it became evident that people naturally tend to want to explore data by city or by state rather than by county. Since we used third party data, we <i>could</i> not control how it was organized, but we could simplify the lookup process for the user. We decided to implement a donut chart depicting each county in the queried state. The size of each slice of the donut chart encodes the relative percentage of cases for each county within the given state. As can be expected, the color encodings are consistent with the move index data. There is also linking functionality that comes into play. When a user hovers over slices of the donut chart, the geographic location of those counties is highlighted on the chloropleth map. When a user clicks on a slice, the animated bar chart is displayed in lieu of the donut chart. 
+                     </p>
+                     <span class="proj-text">
+                  </div>
+
                   <div data-aos="fade-right" class="proj-row">
                      <img src="./covid-gifs/dem_trends.gif" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
+                  </div>
+
+                  <div data-aos="fade-right" class="proj-row" >
+                     <p>You can also click on the “Switch to Demographic Trends” button to explore how move index and case data correlate with demographic trends such as median income, political alignment, and unemployment rate. The default demographic is median income. The counties retain their coloring that matches up with the move index by week, but are aligned on an x-axis from least wealthy to most wealthy, according to the median income recorded in by the United States Census for each county. Because there is full linking functionality with case data, as there was this map, this view allows users to explore how income might affect where people are sheltering in place. These are important correlations to take note of, but we think it is even more powerful to visualize them! <br>
+                     </p>
+                     <span class="proj-text">
                   </div>
 
                   <div data-aos="fade-up" class="proj-row" >
