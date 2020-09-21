@@ -5296,8 +5296,10 @@ opacity: 1;
 }
 
 .proj-text {
-	font-size: 1.1rem;
-	line-height: 0.5;
+	overflow-wrap: break-word !important;
+	white-space: normal;
+	/* font-size: 1.1rem;
+	line-height: 0.5; */
 }
 
 hr.line {
