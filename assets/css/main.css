@@ -2310,7 +2310,7 @@ body {
       .hex {
 	position: relative;
 	visibility:hidden;
-	outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+	outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
       }
       .hex::after{
 	content:'';
@@ -2324,7 +2324,7 @@ body {
 	margin:0 2%;
 	overflow: hidden;
 	visibility: hidden;
-	outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+	 /* fix for jagged edges in FF on hover transition */
 	-webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
 	    -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
 		transform: rotate3d(0,0,1,-60deg) skewY(30deg);
@@ -2332,7 +2332,7 @@ body {
       .hexIn * {
 	position: absolute;
 	visibility: visible;
-	outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+	outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
       }
       .hexLink {
 	  display:block;
@@ -2370,7 +2370,7 @@ body {
       .hex h1 {
 	bottom: 50%;
 	padding-top:50%;
-	font-size: 1.5em;
+	font-size: 1em;
 	z-index: 1;
 	-webkit-transform:translate3d(0,-100%,0);
 	    -ms-transform:translate3d(0,-100%,0);
@@ -2383,7 +2383,7 @@ body {
 	left: 45%;
 	width: 10%;
 	text-align: center;
-	border-bottom: 1px solid #fff;
+	border-bottom: 1px solid rgb(255, 255, 255);
       }
       .hex p {
 	top: 50%;
