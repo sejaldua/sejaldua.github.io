@@ -2,11 +2,12 @@ My personal website! This project represents my first experience coding in
 HTML and CSS. I am using my own Google domain and plan on updating the site
 as I work on more projects that I will be adding to my portfolio.
 
-### UPDATES
+### ⚡ Fun New Features ⚡
 
-I am very proud of a few recent features I have added to this site:
-1. the timeline page of my academic journey till now (check it out! suggestion: best enjoyed on full-screen on a computer but mobile-friendly)
-2. wrote some Javascript so that the header image of both html pages changes depending on the day of the month (NOTE: this requires having 31 cover / banner photos and having a consistent naming convention for those photos)
+1. The timeline page of my academic journey till now (check it out! suggestion: best enjoyed on full-screen on a computer but mobile-friendly)
+![timeline](images/timeline.png)
+
+2. Wrote some Javascript so that the header image of both html pages changes depending on the day of the month (NOTE: this requires having 31 cover / banner photos and having a consistent, sequential naming convention for those photos)
 
 Here is the code for that:
 ```Javascript
@@ -25,12 +26,20 @@ $(document).ready(function(){
 });
 </script>
 ```
-3. discovered ![sourcerer app](https://github.com/sourcerer-io/sourcerer-app) which gives you a bunch of insights into what type of developer you are (e.g. which languages you are most preficient in, when you are most active / productive, which libraries you have used, coding conventions you prefer, etc.). this is the link to my profile: https://sourcerer.io/sejaldua. you can access it on my website by navigating to the footer and clicking on the statistics icon:
+4. discovered ![sourcerer app](https://github.com/sourcerer-io/sourcerer-app) which gives you a bunch of insights into what type of developer you are (e.g. which languages you are most preficient in, when you are most active / productive, which libraries you have used, coding conventions you prefer, etc.). this is the link to my profile: https://sourcerer.io/sejaldua. you can access it on my website by navigating to the footer and clicking on the statistics icon:
 
 ![sourcerer gif](images/sourcerer1.gif)
 
-4. added a timeline page! ![timeline](images/timeline.png)
+### Tracking Hits
 
+| Page | Count |
+|-----|-----|
+| Home | ![Home](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com) |
+| Projects | ![Projects](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Fprojects.html) |
+| Timeline | ![Timeline](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Ftimeline.html)  |
+| Articles | ![Articles](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Farticles.html)  |
+| Links | ![Links](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Flinks.html)  |
+| Bucket List | ![Bucket List](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Fbucketlist.html)  |
 
 ### CREDITS
 
@@ -40,4 +49,4 @@ $(document).ready(function(){
 * jQuery (jquery.com)
 * Scrollex (github.com/ajlkn/jquery.scrollex)
 * Responsive Tools (github.com/ajlkn/responsive-tools)
-* HELP --> w3 (https://www.w3schools.com/)
+* HELP → w3 (https://www.w3schools.com/)
