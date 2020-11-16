@@ -32,14 +32,16 @@ $(document).ready(function(){
 
 ### Tracking Hits
 
-| Page | Count |
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com)
+
+<!-- | Page | Count |
 |-----|-----|
 | Home | ![Home](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com) |
 | Projects | ![Projects](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Fprojects.html) |
 | Timeline | ![Timeline](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Ftimeline.html)  |
 | Articles | ![Articles](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Farticles.html)  |
 | Links | ![Links](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Flinks.html)  |
-| Bucket List | ![Bucket List](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Fbucketlist.html)  |
+| Bucket List | ![Bucket List](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fsejaldua.com%2Fbucketlist.html)  | -->
 
 ### CREDITS
 
