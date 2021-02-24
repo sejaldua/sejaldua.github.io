@@ -2304,7 +2304,7 @@ body {
 	font-size: 12px;
 	line-height: 1.4;
 	list-style-type: none;
-	background-color: #A4CEE5;
+	background-color: rgba(182, 201, 241, 0.5);
       }
       
       .hex {
