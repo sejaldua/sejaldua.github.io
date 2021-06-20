@@ -27,6 +27,7 @@
                               <li><a href="./../articles.html" class="effect-underline">Articles</a></li>
                               <li><a href="./../timeline.html" class="effect-underline">Timeline</a></li>
                               <li><a href="./../links.html" class="effect-underline">Links</a></li>
+                              <li><a href="./../bucketlist.html" class="effect-underline">Bucket List</a></li>
                            </ul>
                         </div>
                      </li>
@@ -36,21 +37,19 @@
       <article id="main">
          <div class="proj" style="padding-top:2%;padding-left:4%; padding-right: 4%">
             <div data-aos="fade-down" class="proj-row">
-               <h2 style="width: 100%; text-align: center;">IBM Research Challenge: Pilter AI</h2>
+               <h2 style="width: 100%; text-align: center;">Synergy Scouting App</h2>
             </div>
 
 
             <div data-aos="fade-right" class="proj-row" style="text-align: center;">
-               <!-- <img src="./../images/pilter-design.png" style="width: 41%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);"> -->
-               <img src="./../images/working_demo2.gif" style="width: 70%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
+               <!-- <img src="./../images/synergy-ugly.png" style="width: 41%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);"> -->
+               <img src="./../projects/synergy-media/small-demo.gif" style="width: 70%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
             </div>
 
             <div data-aos="fade-up" class="proj-row">
                <h3>Description</h3>
                <span class="proj-text">
-                  There are many studies published on the utilization of generic drugs for cancer treatment. Analyzing these data is a huge challenge for automation, with little profit incentive, which is why Cures for Cancer within Reach is taking on this challenge.
-                  <br><br>
-                  Patients and their families are often eager to help with cancer research-- and we'd like to help them feel empowered during an otherwise difficult period of time in their lives. With this in mind, we created a machine learning powered interface for annotating scientific abstracts. It uses suggestions to help guide a typical user (i.e. someone who may not have a biomedical background) through the annotation process.
+                  Synergy is a data tracking platform used primarily for scouting purposes in collegiate basketball. We created this app to enable coaches to scout opponent teams with a filterable subset of games. Coaches can choose a team to scout, select similar caliper opponents that the scouted team has played, and then view a comprehensive breakdown of that team’s strengths and weaknesses through a breakdown play types. The data is displayed in a standard tabular format with complementary data visualizations to drive insights.
                   </span>
             </div>
 
@@ -60,8 +59,8 @@
 
             <div data-aos="fade-up" class="proj-row">
                <h3>Deep Dive</h3>
-               <a href="https://github.com/sejaldua/IBM-research-challenge" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a>
-               <a href="https://github.com/sejaldua/IBM-research-challenge" target="_blank" class="effect-underline"> IBM-research-challenge</a><br>
+               <a href="https://github.com/sejaldua/synergy-scouting-app" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a>
+               <a href="https://github.com/sejaldua/synergy-scouting-app" target="_blank" class="effect-underline"> synergy-scouting-app</a><br>
                </div>
 
 
@@ -72,11 +71,11 @@
             <div data-aos="fade-up" class="proj-row" >
                <h3>Details</h3>
                <span class="proj-text">
-               <b>Date: </b> January 2020 <br>
-               <b>Team: </b> Sejal Dua, Smruthi Ramesh, Anastasia Spangler, Ashvini Varatharaj, Sulbha Aggarwal<br>
-               <b>Related: </b> #Hackathon #NLP #CancerResearch #DrugRepurposing<br>
-               <b>Language(s):</b> Python, HTML, CSS<br>
-               <b>Tools & Technologies:</b> Python Flask, AllenNLP, SciSpacy
+               <b>Date: </b> April 2021 <br>
+               <b>Team: </b> Sejal Dua, Sook-Hee Evans, Noah Zhang<br>
+               <b>Related: </b> #SportsAnalytics #Basketball #DataEngineering #Visualization<br>
+               <b>Language(s):</b> Python, HTML<br>
+               <b>Tools & Technologies:</b> Streamlit
                </span>
             </div>
 
@@ -85,14 +84,19 @@
             </div>
 
             <div data-aos="fade-up" class="proj-row" >
-               <h3>Approach</h3>
+               <h3>Motivation</h3>
             </div>
 
             <div data-aos="fade-left" class="proj-row">
-               <img src="./../images/pilter-design.png" style="width: 50%; display: inline-block; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664); margin: 0rem 2rem;" align="left">This project involves breaking down overwhelmingly technical text into information that can be used to identify promising cancer research directions. Therefore, when implementing the machine learning model to aid the user in labeling / annotating the data, our first priority was to create something that does not require them to read the full abstract or parse through its complex biomedical jargon. We aimed to make it the user's sole job to evaluate and improve our machine learning model.<br>
+               <img src="./../projects/synergy-media/synergy-ugly.png" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
             </div>
 
-            <div data-aos="fade-right" class="proj-row" >
+            <div data-aos="fade-left" class="proj-row">
+               <!-- <img src="./../projects/synergy-media/synergy-ugly.png" style="width: 50%; display: inline-block; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664); margin: 0rem 2rem;" align="left"> -->
+               Synergy is an app used for collegiate basketball scouting. Its current bottlenecks include <b>poor organization</b>, <b>poor usability</b>, and <b>lack of practicality</b> in the context of DIII scouting. Most notably, user-facing data tends to be heavily skewed towards landslide games against out-of-conference opponents, rendering insights unactionable. <br>
+            </div>
+
+            <!-- <div data-aos="fade-right" class="proj-row" >
                <img src="./../images/allennlp.png" style="width: 50%; display: inline-block; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664); margin: 0rem 2rem;" align="right"> The most promising tool at our disposal was <a href="https://demo.allennlp.org/reading-comprehension/MjI5NTE1Ng=="><u>Allen NLP</u></a>, which is an open-source NLP research library, built on PyTorch. They have a functionality called "Reading Comprehension." This deep learning tool allows for the input data to be in the form of question and the output data to be in the form of an answer (or answer choice in the case of multiple-choice questions). We used Allen NLP as an API that we direct queries to, and used the output from the pre-trained ELMo-BiDaF models as suggested answers for the user.<br>
             </div>
 
@@ -146,7 +150,7 @@ For each annotation category, we engineered the input and output specifications 
 
             <div data-aos="fade-up" class="proj-row" >
                <span class="icon solid fa-angle-double-right"><b>&nbsp;hackathon</b><br>This was my first hackathon ever. I learned that meeting people and bonding with people helps establish team chemistry which translates toward a better final product. I also learned that given the nature of hackathons, it is important to strive for a working demo rather than perfection!</span>
-            </div>
+            </div> -->
 
          </div>
       </article>
