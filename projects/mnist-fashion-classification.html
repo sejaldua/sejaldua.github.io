@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+      <head>
+            <title>Projects</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+            <link rel="stylesheet" href="./../assets/css/main.css" />
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            <noscript><link rel="stylesheet" href="./../assets/css/noscript.css" /></noscript>
+            <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+         </head>
+   <body>
+   <div id="page-wrapper">
+
+         <!-- Header -->
+            <header id="header">
+               <h1><a href="./../index.html">Sejal Dua</a></h1>
+               <nav id="nav">
+                  <ul>
+                     <li class="special">
+                        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                        <div id="menu">
+                           <ul>
+                              <li><a href="index.html" class="effect-underline">Home</a></li>
+                              <li><a href="projects.html" class="effect-underline">Projects</a></li>
+                              <li><a href="articles.html" class="effect-underline">Articles</a></li>
+                              <li><a href="timeline.html" class="effect-underline">Timeline</a></li>
+                              <li><a href="bucketlist.html" class="effect-underline">Bucket List</a></li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </nav>
+            </header>
+      <article id="main">
+         <div class="proj" style="padding-top:2%;padding-left:4%; padding-right: 4%">
+            <div data-aos="fade-down" class="proj-row">
+               <h2 style="width: 100%; text-align: center;">MNIST Sneaker vs Sandal Classifier</h2>
+            </div>
+
+
+            <div data-aos="fade-right" class="proj-row">
+               <img src="./../covers/fashion-mnist.png" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
+            </div>
+
+            <div data-aos="fade-up" class="proj-row">
+               <h3>Description</h3>
+               <span class="proj-text">
+                  The objective of this project was to develop a binary classifier (logistic regression) to classify images 
+                  from the MNIST fashion dataset as either sneakers (0) or sandals (1).
+               </span>
+            </div>
+
+            <div data-aos="fade-up" class="proj-row" >
+               <hr class="line">
+            </div>
+            
+            <div data-aos="fade-up" class="proj-row" >
+               <h3>Details</h3>
+               <span class="proj-text">
+               <b>Date: </b> March 2020 - May 2020<br>
+               <b>Related: </b> #MachineLearning #Regression #Classifier<br>
+               <b>Language(s):</b> Python<br>
+               </span>
+            </div>
+
+            <div data-aos="fade-up" class="proj-row" >
+               <hr class="line">
+            </div>
+
+            Though the MNIST fashion dataset contains images of all types of clothing, a subset of the dataset was used to isolate
+            the sneaker and sandal images.
+
+            <div data-aos="fade-left" class="proj-row">
+               <img src="./../images/orig-shoe-images.png" style="width: 40%; display: inline-block; margin: 0rem 1rem;" align="right"/>
+               From the preview images to the right, we can make a few observations:
+               <ul>
+                  <li>prevalence of highly concentrated white pixels in certain central regions</li>
+                  <li>sandals have a lot of negative space</li>
+                  <li>height of shoe vs sandal</li>
+                  <li>shape of shoe vs sandal</li>
+                  <li>bottom vs upper part of the shoe is typically colored differently</li>
+                  <li>logos and patterns prevalent on seakers</li>
+               </ul>
+            </div>
+
+            <div data-aos="fade-right" class="proj-row">
+               <img src="./../images/mnist-confusionmatrix.png" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.664);">
+            </div>
+
+            <div data-aos="fade-up" class="proj-row" >
+               <span class="proj-text">
+                  Afer aseembling a baseline classifier, I obtained an accuracy score of 96.75%. I plotted some of the misclassified images in confusion matrix
+                  format above. <br><br>One of the key learnings of this project was the importance of feature engineering. 
+                  Below are some of the data augmentation tactics I utilized to maximize
+                  the accuracy of my classifier:
+                  <ul>
+                     <li>Count black and white pixels</li>
+                     <li>Flip images horizontally (left-right)</li>
+                     <li>Flip images vertically (up-down)</li>
+                     <li>Make a histogram of brightness intensities to capture graphic patterns on sneakers</li>
+                  </ul>
+                  Ultimately, the highest accuracy score obtained from all experiments was 97.15%. This was an interesting project that piqued my 
+                  interest in machine learning, deep learning, and computer vision.
+               </span>
+            </div>
+
+         </div>
+      </article>
+      </html>
+
+      <html>
+      <footer id="footer">
+				<ul class="icons">
+					<li><a href="https://twitter.com/SejalDua" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="https://www.facebook.com/sejal.dua.7" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/sejaldua99/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://www.linkedin.com/in/sejal-dua-761371164/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					<li><a href="mailto:Sejal.Dua@tufts.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Sejal Dua </li>
+				</ul>
+			</footer>
+
+   </div>
+   		<!-- Scripts -->
+			<script src="./../assets/js/jquery.min.js"></script>
+			<script src="./../assets/js/jquery.scrollex.min.js"></script>
+			<script src="./../assets/js/jquery.scrolly.min.js"></script>
+			<script src="./../assets/js/browser.min.js"></script>
+			<script src="./../assets/js/breakpoints.min.js"></script>
+			<script src="./../assets/js/util.js"></script>
+         <script src="./../assets/js/main.js"></script>
+         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
