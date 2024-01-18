@@ -4631,6 +4631,7 @@ opacity: 1;
 		overflow: hidden;
 		position: relative;
 		text-align: center;
+		opacity: 1;
 	}
 
 		#banner h2 {
